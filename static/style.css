@@ -1,0 +1,318 @@
+body {
+    margin: 0;
+    font-family: "Prompt", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    margin-top: 3em;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 650;
+}
+
+h2 {
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+#inputForm {
+    color: rgb(0, 0, 0);
+    /*color of text*/
+    margin: 2em auto;
+    text-align: center;
+}
+
+#container3D {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    /*color of 3D part*/
+}
+
+#boxes {
+    margin-bottom: 1em;
+}
+
+.boxInput {
+    margin-bottom: 1em;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+}
+
+#sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 250px;
+    height: calc(100vh - 40px);
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    /* Initially hidden */
+    transition: all 0.3s ease;
+    /* Add transition for smooth effect */
+}
+
+
+/* start switch */
+/* From Uiverse.io by Galahhad */
+.switch {
+    /* switch */
+    --switch-width: 46px;
+    --switch-height: 24px;
+    --switch-bg: rgb(131, 131, 131);
+    --switch-checked-bg: rgb(0, 218, 80);
+    --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
+    --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    /* circle */
+    --circle-diameter: 18px;
+    --circle-bg: #fff;
+    --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
+    --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
+    --circle-transition: var(--switch-transition);
+    /* icon */
+    --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    --icon-cross-color: var(--switch-bg);
+    --icon-cross-size: 6px;
+    --icon-checkmark-color: var(--switch-checked-bg);
+    --icon-checkmark-size: 10px;
+    /* effect line */
+    --effect-width: calc(var(--circle-diameter) / 2);
+    --effect-height: calc(var(--effect-width) / 2 - 1px);
+    --effect-bg: var(--circle-bg);
+    --effect-border-radius: 1px;
+    --effect-transition: all .2s ease-in-out;
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch {
+    display: inline-block;
+}
+
+.switch svg {
+    -webkit-transition: var(--icon-transition);
+    -o-transition: var(--icon-transition);
+    transition: var(--icon-transition);
+    position: absolute;
+    height: auto;
+}
+
+.switch .checkmark {
+    width: var(--icon-checkmark-size);
+    color: var(--icon-checkmark-color);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+.switch .cross {
+    width: var(--icon-cross-size);
+    color: var(--icon-cross-color);
+}
+
+.slider {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background: var(--switch-bg);
+    border-radius: 999px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    -webkit-transition: var(--switch-transition);
+    -o-transition: var(--switch-transition);
+    transition: var(--switch-transition);
+    cursor: pointer;
+}
+
+.circle {
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    background: var(--circle-bg);
+    border-radius: inherit;
+    -webkit-box-shadow: var(--circle-shadow);
+    box-shadow: var(--circle-shadow);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: var(--circle-transition);
+    -o-transition: var(--circle-transition);
+    transition: var(--circle-transition);
+    z-index: 1;
+    position: absolute;
+    left: var(--switch-offset);
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: var(--effect-width);
+    height: var(--effect-height);
+    left: calc(var(--switch-offset) + (var(--effect-width) / 2));
+    background: var(--effect-bg);
+    border-radius: var(--effect-border-radius);
+    -webkit-transition: var(--effect-transition);
+    -o-transition: var(--effect-transition);
+    transition: var(--effect-transition);
+}
+
+/* actions */
+
+.switch input:checked+.slider {
+    background: var(--switch-checked-bg);
+}
+
+.switch input:checked+.slider .checkmark {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.switch input:checked+.slider .cross {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+.switch input:checked+.slider::before {
+    left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+}
+
+.switch input:checked+.slider .circle {
+    left: calc(100% - var(--circle-diameter) - var(--switch-offset));
+    -webkit-box-shadow: var(--circle-checked-shadow);
+    box-shadow: var(--circle-checked-shadow);
+}
+/* end switch */
+
+
+#box-status-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#box-status-list li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 450;
+}
+
+.box-status {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.color-indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+/* start the input form */
+#boxTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+#boxTable th,
+#boxTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#boxTable th {
+    background-color: #3f5be4;
+    /*fill cols color*/
+    font-weight: 450;
+}
+
+table {
+    margin: 0 auto;
+    /* กึ่งกลางหน้าจอ */
+    width: 90%;
+    /* ขนาดของตารางแบบ 90% ของหน้าจอ */
+    max-width: 1000px;
+    /* กำหนดความกว้างสูงสุด */
+    border-collapse: collapse;
+    /* ลบเส้นแยกระหว่างเซลล์ */
+    background-color: #c9e7ff;
+    /* สีพื้นหลังของตาราง */
+    border-radius: 10px;
+    /* ขอบตารางมน */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* เพิ่มเงา */
+}
+
+/* end the input form */
+
+
+/* start delete botton */
+.deleteBtn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover {
+    background-color: #c0392b;
+}
+
+/* end delete botton */
